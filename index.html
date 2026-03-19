@@ -122,24 +122,101 @@ document.getElementById("daysTogether").innerText =
 
 // WIADOMOŚĆ
 function showMessage() {
-    alert("JESTES DLA MNIE NAJWAZNIEJSZA MYSZO!");
+    alert("Lili, jesteś najlepszą rzeczą jaka mnie spotkała ❤️");
 }
 
-// SERDUSZKA
+// "KOCHAM CIĘ" – DUŻO JĘZYKÓW (1 kraj = 1 język)
+const loveTexts = [
+"Kocham cię",
+"I love you",
+"Te amo",
+"Je t’aime",
+"Ich liebe dich",
+"Ti amo",
+"Eu te amo",
+"Te iubesc",
+"Szeretlek",
+"Miluji tě",
+"Ľúbim ťa",
+"Volim te",
+"Ljubim te",
+"Obožavam te",
+"Обичам те",
+"Σε αγαπώ",
+"Seni seviyorum",
+"Я тебя люблю",
+"Я тебе кохаю",
+"Я цябе кахаю",
+"Ma armastan sind",
+"Aš tave myliu",
+"Es tevi mīlu",
+"Jeg elsker dig",
+"Jeg elsker deg",
+"Jag älskar dig",
+"Rakastan sinua",
+"Ég elska þig",
+"Ik hou van jou",
+"Ich han di gärn",
+"Mi amas vin",
+"T’estimo",
+"T’estime",
+"Te iubesc mult",
+"Volim te puno",
+"Ti voglio bene",
+"Amo-te",
+"Jeg elsker deg høyt",
+"Ja tebe ljubim",
+"Te sakam",
+"Obicham te mnogo",
+"Men seni seviyorum",
+"Te dua",
+"Unë të dua",
+"Ja ljublju tebja",
+"Sto s’agapo",
+"Te quiero mucho",
+"Jag tycker om dig",
+"Ik zie je graag",
+"Mi te amo",
+"Te am"
+];
+
+// SERDUSZKA → TEKST
 function createHeart() {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
     heart.innerHTML = "❤️";
+    heart.style.position = "absolute";
     heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "0px";
     heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    heart.style.transition = "transform 3s linear, opacity 0.5s";
     document.body.appendChild(heart);
+
+    // lecą wyżej (do połowy)
+    setTimeout(() => {
+        heart.style.transform = "translateY(-55vh)";
+    }, 50);
+
+    // w połowie zamiana w tekst
+    setTimeout(() => {
+        const randomText = loveTexts[Math.floor(Math.random() * loveTexts.length)];
+        heart.innerHTML = randomText;
+        heart.style.fontSize = "24px";
+        heart.style.color = "white";
+        heart.style.textShadow = "0 0 10px rgba(255,255,255,0.8)";
+    }, 1500);
+
+    // widoczne chwilę
+    setTimeout(() => {
+        heart.style.opacity = "0";
+    }, 3000);
 
     setTimeout(() => {
         heart.remove();
-    }, 6000);
+    }, 3500);
 }
 
-setInterval(createHeart, 300);
+// częstotliwość
+setInterval(createHeart, 350);
 </script>
 
 </body>
