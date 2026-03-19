@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Dla Lili ❤️</title>
+<style>
+    body {
+        margin: 0;
+        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+        font-family: Arial;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+    }
+
+    h1 {
+        margin-top: 80px;
+        font-size: 50px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .text {
+        margin-top: 20px;
+        font-size: 22px;
+    }
+
+    .counter {
+        margin-top: 20px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .heart {
+        position: absolute;
+        color: red;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        from { transform: translateY(100vh); }
+        to { transform: translateY(-10vh); }
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 20px;
+        border: none;
+        border-radius: 20px;
+        background: white;
+        color: #ff4b5c;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>Lili, Kocham Cię ❤️</h1>
+
+<div class="counter" id="daysTogether"></div>
+
+<div class="text">
+    I love you 🇬🇧<br>
+    Te amo 🇪🇸<br>
+    Je t’aime 🇫🇷<br>
+    Ich liebe dich 🇩🇪<br>
+    Ti amo 🇮🇹<br>
+    Я тебя люблю 🇷🇺<br>
+    愛してる 🇯🇵<br>
+    사랑해 🇰🇷<br>
+    我爱你 🇨🇳
+</div>
+
+<button onclick="showMessage()">Kliknij mnie 💌</button>
+
+<script>
+// LICZNIK DNI
+const startDate = new Date("2026-02-28");
+const today = new Date();
+
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+document.getElementById("daysTogether").innerText =
+    "Znamy się już " + diffDays + " dni ❤️";
+
+// WIADOMOŚĆ
+function showMessage() {
+    alert("Lili, jesteś najlepszą rzeczą jaka mnie spotkała ❤️");
+}
+
+// SERDUSZKA
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
