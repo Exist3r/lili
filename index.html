@@ -87,7 +87,8 @@
     <div class="center">
         <h1>Lili, Kocham cię!!!!!!!❤️</h1>
         <div class="counter" id="daysTogether"></div>
-
+        <div class="counter" id="relationshipTime"></div>
+        
         <div class="text">
             Kocham cię! <br>
             I love you! <br>
@@ -102,6 +103,8 @@
         </div>
 
         <button onclick="showMessage()">Kliknij mnie 💌</button>
+        <br><br>
+<button onclick="openCertificate()">Certyfikat 📜</button>
     </div>
 
     <!-- PRAWE ZDJĘCIE -->
@@ -119,7 +122,16 @@ const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
 document.getElementById("daysTogether").innerText =
     "Znamy się już " + diffDays + " dni ❤️";
+// LICZNIK ZWIĄZKU
+const relationshipStart = new Date("2026-04-17");
+const now = new Date();
 
+const diffTimeRel = now - relationshipStart;
+const diffDaysRel = Math.floor(diffTimeRel / (1000 * 60 * 60 * 24));
+
+document.getElementById("relationshipTime").innerText =
+    "Jesteśmy razem już " + diffDaysRel + " dni :> ❤️ ";
+    
 // WIADOMOŚĆ
 function showMessage() {
     alert("Kochanie pamiętaj że jesteś Najpiękniejszym pingwinkiem jakiego spotkałem, nie przejmuj się swoimi myślami wpojonymi przez innych ze powinans wygladac tak lub inaczej. JESTEŚ PIĘKNA PAMIĘTAJ! <3 ");
@@ -217,6 +229,10 @@ function createHeart() {
 
 // częstotliwość
 setInterval(createHeart, 350);
+
+    function openCertificate() {
+    window.open("certyfikat.jpg", "_blank");
+}
 </script>
 
 </body>
