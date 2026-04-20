@@ -12,7 +12,7 @@ body {
     overflow: hidden;
 }
 
-/* GŁÓWNY UKŁAD */
+/* UKŁAD */
 .container {
     display: flex;
     justify-content: space-between;
@@ -21,12 +21,12 @@ body {
     padding: 20px;
 }
 
-/* LEWA STRONA */
+/* LEWA */
 .left-side {
     width: 25%;
 }
 
-/* PRAWA STRONA */
+/* PRAWA */
 .right-side {
     display: flex;
     flex-direction: column;
@@ -34,11 +34,11 @@ body {
     width: 25%;
 }
 
-/* ZDJĘCIA */
+/* ZDJĘCIA – BEZ PRZYCINANIA */
 .side-img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
@@ -113,7 +113,7 @@ button:hover {
             Kocham cię! <br>
             I love you! <br>
             Te amo! <br>
-            Je t’aime~! <br>
+            Je t’aime! <br>
             Ich liebe dich! <br>
             Ti amo! <br>
             Я тебя люблю! <br>
@@ -160,7 +160,7 @@ function showMessage() {
 const loveTexts = [
 "Kocham cię","I love you","Te amo","Je t’aime","Ich liebe dich","Ti amo",
 "Eu te amo","Te iubesc","Szeretlek","Miluji tě","Ľúbim ťa","Volim te",
-"Обичам те","Σε αγαπώ","Seni seviyorum","Я тебя люблю","Я тебе кохаю",
+"Обичам te","Σε αγαπώ","Seni seviyorum","Я тебя люблю","Я тебе кохаю",
 "Ma armastan sind","Aš tave myliu","Jeg elsker dig","Jag älskar dig",
 "Rakastan sinua","Ik hou van jou","Te quiero","Te dua","Unë të dua"
 ];
