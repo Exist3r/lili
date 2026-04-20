@@ -4,81 +4,92 @@
 <meta charset="UTF-8">
 <title>Dla Lili ❤️</title>
 <style>
-    body {
-        margin: 0;
-        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-        font-family: Arial;
-        color: white;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    font-family: Arial;
+    color: white;
+    overflow: hidden;
+}
 
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100vh;
-        padding: 20px;
-    }
+/* GŁÓWNY UKŁAD */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
 
-    .side-img {
-        width: 25%;
-        border-radius: 20px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
+/* LEWA STRONA */
+.left-side {
+    width: 25%;
+}
 
-    .center {
-        text-align: center;
-        width: 50%;
-    }
-
-    h1 {
-        font-size: 50px;
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-    }
-
-    .counter {
-        margin-top: 15px;
-        font-size: 26px;
-        font-weight: bold;
-    }
-
-    .text {
-        margin-top: 20px;
-        font-size: 22px;
-    }
-
-    button {
-        margin-top: 25px;
-        padding: 15px 30px;
-        font-size: 20px;
-        border: none;
-        border-radius: 20px;
-        background: white;
-        color: #ff4b5c;
-        cursor: pointer;
-    }
-
-    .heart {
-        position: absolute;
-        color: red;
-        animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-        from { transform: translateY(100vh); }
-        to { transform: translateY(-10vh); }
-    }
-    .right-side {
+/* PRAWA STRONA */
+.right-side {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 25%;
+}
+
+/* ZDJĘCIA */
+.side-img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* ŚRODEK */
+.center {
+    text-align: center;
+    width: 50%;
+}
+
+h1 {
+    font-size: 50px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.counter {
+    margin-top: 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.text {
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff4b5c;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* SERDUSZKA */
+.heart {
+    position: absolute;
 }
 </style>
 </head>
@@ -86,15 +97,18 @@
 
 <div class="container">
 
-    <!-- LEWE ZDJĘCIE -->
-    <img src="lewe.jpg" class="side-img">
+    <!-- LEWA -->
+    <div class="left-side">
+        <img src="lewe.jpg" class="side-img">
+    </div>
 
     <!-- ŚRODEK -->
     <div class="center">
-        <h1>Lili, Kocham cię!!!!!!!❤️</h1>
+        <h1>Lili, Kocham cię!!!!!!! ❤️</h1>
+
         <div class="counter" id="daysTogether"></div>
         <div class="counter" id="relationshipTime"></div>
-        
+
         <div class="text">
             Kocham cię! <br>
             I love you! <br>
@@ -105,139 +119,80 @@
             Я тебя люблю! <br>
             愛してる! <br>
             사랑해! <br>
-            我爱你! 
+            我爱你!
         </div>
 
         <button onclick="showMessage()">Kliknij mnie 💌</button>
         <br><br>
-<button onclick="openCertificate()">Certyfikat 📜</button>
+        <button onclick="openCertificate()">Certyfikat 📜</button>
     </div>
 
-    <!-- PRAWE ZDJĘCIE -->
+    <!-- PRAWA -->
     <div class="right-side">
-    <img src="prawe.jpg" class="side-img">
-    <img src="fota2.jpg" class="side-img">
+        <img src="prawe.jpg" class="side-img">
+        <img src="fota2.jpg" class="side-img">
+    </div>
+
 </div>
 
 <script>
-// LICZNIK DNI
+// LICZNIK ZNAJOMOŚCI
 const startDate = new Date("2026-02-28");
 const today = new Date();
-
-const diffTime = today - startDate;
-const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
 
 document.getElementById("daysTogether").innerText =
     "Znamy się już " + diffDays + " dni ❤️";
+
 // LICZNIK ZWIĄZKU
 const relationshipStart = new Date("2026-04-17");
-const now = new Date();
-
-const diffTimeRel = now - relationshipStart;
-const diffDaysRel = Math.floor(diffTimeRel / (1000 * 60 * 60 * 24));
+const diffDaysRel = Math.floor((today - relationshipStart) / (1000 * 60 * 60 * 24));
 
 document.getElementById("relationshipTime").innerText =
-    "Jesteśmy razem już " + diffDaysRel + " dni :> ❤️ ";
-    
+    "Jesteśmy razem już " + diffDaysRel + " dni ❤️";
+
 // WIADOMOŚĆ
 function showMessage() {
-    alert("Popełniłem błąd, oby to był ostatni, mam nadzieje że nie będziesz widzieć tego błędu przed oczami patrząc na mnie bardzo mocno tego żałuje. Kocham cie nad życie i nie chce cie stracić. Jesteś moją myszką!!! <3 ");
+    alert("Popełniłem błąd, oby to był ostatni... Kocham cię nad życie ❤️");
 }
 
-// "KOCHAM CIĘ" – DUŻO JĘZYKÓW (1 kraj = 1 język)
+// TEKSTY
 const loveTexts = [
-"Kocham cię",
-"I love you",
-"Te amo",
-"Je t’aime",
-"Ich liebe dich",
-"Ti amo",
-"Eu te amo",
-"Te iubesc",
-"Szeretlek",
-"Miluji tě",
-"Ľúbim ťa",
-"Volim te",
-"Ljubim te",
-"Obožavam te",
-"Обичам те",
-"Σε αγαπώ",
-"Seni seviyorum",
-"Я тебя люблю",
-"Я тебе кохаю",
-"Я цябе кахаю",
-"Ma armastan sind",
-"Aš tave myliu",
-"Es tevi mīlu",
-"Jeg elsker dig",
-"Jeg elsker deg",
-"Jag älskar dig",
-"Rakastan sinua",
-"Ég elska þig",
-"Ik hou van jou",
-"Ich han di gärn",
-"Mi amas vin",
-"T’estimo",
-"T’estime",
-"Te iubesc mult",
-"Volim te puno",
-"Ti voglio bene",
-"Amo-te",
-"Jeg elsker deg høyt",
-"Ja tebe ljubim",
-"Te sakam",
-"Obicham te mnogo",
-"Men seni seviyorum",
-"Te dua",
-"Unë të dua",
-"Ja ljublju tebja",
-"Sto s’agapo",
-"Te quiero mucho",
-"Jag tycker om dig",
-"Ik zie je graag",
-"Mi te amo",
-"Te am"
+"Kocham cię","I love you","Te amo","Je t’aime","Ich liebe dich","Ti amo",
+"Eu te amo","Te iubesc","Szeretlek","Miluji tě","Ľúbim ťa","Volim te",
+"Обичам те","Σε αγαπώ","Seni seviyorum","Я тебя люблю","Я тебе кохаю",
+"Ma armastan sind","Aš tave myliu","Jeg elsker dig","Jag älskar dig",
+"Rakastan sinua","Ik hou van jou","Te quiero","Te dua","Unë të dua"
 ];
 
-// SERDUSZKA → TEKST
+// SERDUSZKA
 function createHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.style.position = "absolute";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "0px";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    heart.style.transition = "transform 3s linear, opacity 0.5s";
-    document.body.appendChild(heart);
+    const el = document.createElement("div");
+    el.innerHTML = "❤️";
+    el.style.position = "absolute";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.bottom = "0";
+    el.style.fontSize = (Math.random() * 20 + 20) + "px";
+    el.style.transition = "transform 3s linear, opacity 0.5s";
+    document.body.appendChild(el);
 
-    // lecą wyżej (do połowy)
     setTimeout(() => {
-        heart.style.transform = "translateY(-55vh)";
+        el.style.transform = "translateY(-55vh)";
     }, 50);
 
-    // w połowie zamiana w tekst
     setTimeout(() => {
-        const randomText = loveTexts[Math.floor(Math.random() * loveTexts.length)];
-        heart.innerHTML = randomText;
-        heart.style.fontSize = "24px";
-        heart.style.color = "white";
-        heart.style.textShadow = "0 0 10px rgba(255,255,255,0.8)";
+        el.innerHTML = loveTexts[Math.floor(Math.random() * loveTexts.length)];
+        el.style.fontSize = "24px";
     }, 1500);
 
-    // widoczne chwilę
-    setTimeout(() => {
-        heart.style.opacity = "0";
-    }, 3000);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 3500);
+    setTimeout(() => el.style.opacity = "0", 3000);
+    setTimeout(() => el.remove(), 3500);
 }
 
-// częstotliwość
 setInterval(createHeart, 350);
 
-    function openCertificate() {
+// CERTYFIKAT
+function openCertificate() {
     window.open("certyfikat.jpg", "_blank");
 }
 </script>
